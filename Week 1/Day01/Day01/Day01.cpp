@@ -6,6 +6,7 @@
 #include <string>
 #include "Calculator.h"
 #include "ChefRobot.h"
+#include <iomanip>
 
 int AddOne(int localNumber)
 {
@@ -67,6 +68,9 @@ int main()
             Call the method on the t1000 calculator instance and print the results.
 
     */
+    bool even = t1000.isEven(number);
+    //ternary operator. (condition) ? <true case> : <false case>
+    std::cout << "Is " << number << " even? " << ((even)?"TRUE":"FALSE") << "\n";
 
 
 
@@ -97,13 +101,7 @@ int main()
     names.push_back("Poison Ivy");
 
 
-    /*
-        CHALLENGE #2:
 
-            Create a vector that stores floats. Call the variable grades.
-            Add a few grades to the grades vector.
-
-    */
 
 
 
@@ -140,11 +138,22 @@ int main()
     std::cout << "\n\n";
 
     /*
-        CHALLENGE #3:
+        CHALLENGE #2:
+
+            Create a vector that stores floats. Call the variable grades.
+            Add a few grades to the grades vector.
 
             loop over the grades vector and print out each grade
 
     */
+    srand(time(NULL));
+    std::vector<float> grades;
+    for (size_t i = 0; i < 10; i++)
+        grades.push_back(rand() % 10001 / 100.0F);
+
+    std::cout << "\n#_#_PG 2401 Grades#_#_\n";
+    for (auto& grade : grades)
+        std::cout << std::setw(10) << std::right << grade << "\n";
 
 
 
