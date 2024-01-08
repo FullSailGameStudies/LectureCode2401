@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "Calculator.h"
+#include "ChefRobot.h"
 
 int AddOne(int localNumber)
 {
@@ -22,6 +23,10 @@ void print(const std::vector<std::string>& names)
 
 int main()
 {
+    ChefRobot gordon;
+    std::string todaysMenu = "Hawaiian Pizza";
+    std::string food = gordon.CookFood(todaysMenu);//makes a COPY of todaysMenu
+    std::cout << "Time to eat " << food << ". NOM NOM NOM\n";
     /*
       Calling a method
         use the methods name.
