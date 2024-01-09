@@ -27,7 +27,7 @@ int main()
     ChefRobot gordon;
     std::string todaysMenu = "Hawaiian Pizza";
     std::string food = gordon.CookFood(todaysMenu);//makes a COPY of todaysMenu
-    std::cout << "Time to eat " << food << ". NOM NOM NOM\n";
+    std::cout << "Time to eat " << food << ". NOM NOM NOM!\n";
     /*
       Calling a method
         use the methods name.
