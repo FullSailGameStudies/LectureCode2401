@@ -73,7 +73,10 @@ void CalcStats(const std::vector<float>& course, float& min, float& max)
         //max = std::max(max, course[i]);
     }
 }
-
+/// <summary>
+/// A method to Print Grade. Duh!
+/// </summary>
+/// <param name="grades">a vector of floats containing fractional grades from 0-100.</param>
 void PrintGrades(const std::vector<float>& grades)
 {
     std::cout << "\n2401 PG2 Grades\n";
