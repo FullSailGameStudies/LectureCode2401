@@ -27,7 +27,7 @@ void print(const std::vector<int>& scores)
 {
     std::cout << "----SCORES----\n";
     int index = 1;
-    for (int score : scores)
+    for (auto& score : scores)
         std::cout << index++ << ". " << score << "\n";
 }
 
@@ -130,9 +130,16 @@ int main()
         This is the way you pass by reference and prevent the method from changing the variable.
     */
     std::vector<int> highScores;
+    highScores.reserve(10);
+    printInfo(highScores);
     for (int i = 0; i < 10; ++i)
-        highScores.push_back(rand());
+    {
+        highScores.push_back(rand() % 3000);
+        printInfo(highScores);
+    }
     float avg = average(highScores);
+    highScores.erase(highScores.begin());
+    printInfo(highScores);
 
 
 
@@ -170,10 +177,14 @@ int main()
     for (size_t i = 0; i < highScores.size();)
     {
         if (highScores[i] < 2500)
+        {
             highScores.erase(highScores.begin() + i);
+        }
         else
-            ++i;
+            i++;
+
     }
+    print(highScores);
 
 
     /*
