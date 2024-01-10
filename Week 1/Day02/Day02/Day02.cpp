@@ -36,8 +36,29 @@ void printInfo(const std::vector<int>& scores)
     std::cout << "size: " << scores.size() << "\tcapacity: " << scores.capacity() << "\n";
 }
 
+void GetUserInfo(std::string& firstName, std::string &lastName, int& age)
+{
+    std::cout << "Address of firstName: " << &firstName << "\n";
+    firstName = "Bruce";
+    lastName = "Wayne";
+    age = 35;
+}
+
+void GetGrades(std::vector<float> &course)
+{
+    for (size_t i = 0; i < 10; i++)
+    {
+        course.push_back(rand() % 10001 / 100.0F);
+    }
+}
+
 int main()
 {
+    std::string fName, lName;
+    int myAge = 0;
+    GetUserInfo(fName, lName, myAge);
+    std::cout << "Address of fName: " << &fName << "\n";
+    std::cout << " I am " << fName << " " << lName << ". And I am " << myAge << " years old.\n";
     /*
         ╔══════════════════════════════╗
         ║Parameters: Pass by Reference.║
@@ -62,7 +83,17 @@ int main()
 
     */
     std::vector<float> grades;
+    GetGrades(grades);
+    std::cout << "\n2401 PG2 Grades\n";
+    //for (auto& grade : grades)
+    //{
+    //    std::cout << grade << "\n";
 
+    //}
+    for (size_t i = 0; i < grades.size(); i++)
+    {
+        std::cout << grades[i] << "\n";
+    }
 
 
     /*
