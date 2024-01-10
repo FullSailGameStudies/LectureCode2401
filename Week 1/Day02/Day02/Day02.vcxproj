@@ -131,6 +131,7 @@
     <ClCompile Include="Superhero.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Day02.h" />
     <ClInclude Include="Superhero.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Day02.h"
 
 bool postFix(std::string& hero)
 {
@@ -73,6 +74,20 @@ void CalcStats(const std::vector<float>& course, float& min, float& max)
     }
 }
 
+void PrintGrades(const std::vector<float>& grades)
+{
+    std::cout << "\n2401 PG2 Grades\n";
+    //for (auto& grade : grades)
+    //{
+    //    std::cout << grade << "\n";
+
+    //}
+    for (size_t i = 0; i < grades.size(); i++)
+    {
+        std::cout << grades[i] << "\n";
+    }
+}
+
 int main()
 {
     std::string fName, lName;
@@ -109,16 +124,7 @@ int main()
     */
     std::vector<float> grades;
     GetGrades(grades);
-    std::cout << "\n2401 PG2 Grades\n";
-    //for (auto& grade : grades)
-    //{
-    //    std::cout << grade << "\n";
-
-    //}
-    for (size_t i = 0; i < grades.size(); i++)
-    {
-        std::cout << grades[i] << "\n";
-    }
+    PrintGrades(grades);
 
 
     /*
@@ -209,7 +215,15 @@ int main()
             Remove all the failing grades (grades < 59.5).
             Print the grades.
     */
-
+    PrintGrades(grades);
+    for (size_t i = 0; i < grades.size();)
+    {
+        if (grades[i] < 59.5)
+            grades.erase(grades.begin() + i);
+        else
+            i++;
+    }
+    PrintGrades(grades);
 
 
 
