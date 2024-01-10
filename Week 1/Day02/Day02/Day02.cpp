@@ -52,6 +52,27 @@ void GetGrades(std::vector<float> &course)
     }
 }
 
+void PrintBalance(const float& bankBalance)
+{
+    //bankBalance = 0;
+    std::cout << "Your balance is " << bankBalance << "\n";
+}
+
+void CalcStats(const std::vector<float>& course, float& min, float& max)
+{
+    min = max = course[0];
+    for (size_t i = 1; i < course.size(); i++)
+    {
+        if (min > course[i])
+            min = course[i];
+        if (max < course[i])
+            max = course[i];
+
+        //min = std::min(min, course[i]);
+        //max = std::max(max, course[i]);
+    }
+}
+
 int main()
 {
     std::string fName, lName;
@@ -59,6 +80,10 @@ int main()
     GetUserInfo(fName, lName, myAge);
     std::cout << "Address of fName: " << &fName << "\n";
     std::cout << " I am " << fName << " " << lName << ". And I am " << myAge << " years old.\n";
+
+    float balance = 10000;
+    PrintBalance(balance);
+    std::cout << "My balance is " << balance << "\n";
     /*
         ╔══════════════════════════════╗
         ║Parameters: Pass by Reference.║
@@ -120,6 +145,9 @@ int main()
             2) call the method in main and print out the min, max.
 
     */
+    float min, max;
+    CalcStats(grades, min, max);
+    std::cout << "The min grade is " << min << " and the max grade is " << max << "\n";
 
 
 
