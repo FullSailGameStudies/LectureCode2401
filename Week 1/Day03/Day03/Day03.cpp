@@ -12,9 +12,28 @@ std::string postFix(std::string fileName, int postFixNumber = 1) //postFixNumber
     return fileName + "_" + std::to_string(postFixNumber);
 }
 
+void print(const std::vector<int>& numbers)
+{
+    for (auto& i : numbers)
+    {
+        std::cout << i << "\n";
+    }
+    //for (size_t i = 0; i < numbers.size(); i++)
+    //{
+    //    const int& num = numbers[i];
+    //}
+}
+
 int main()
 {
     Superhero bruce;// ("Batman", "Bruce Wayne");
+
+    std::vector<int> nums;
+    for (size_t i = 0; i < 10000; i++)
+    {
+        nums.push_back(rand());
+    }
+    print(nums);
 
     /*
         ╔═══════════════════════════════╗
@@ -56,6 +75,7 @@ int main()
 
 
 
+    print(nums);
 
 
     /*
