@@ -40,6 +40,59 @@ void Bats(int k)
     }
 }
 
+void bubbleSort(std::vector<int>& A)
+{
+    int n = A.size();
+
+    bool swapped;
+    do
+    {
+        swapped = false;
+        for (size_t i = 1; i <= n - 1; i++)
+        {
+            if (A[i - 1] > A[i])
+            {
+                //swap(A[i - 1], A[i]);
+                int temp = A[i - 1];
+                A[i - 1] = A[i];
+                A[i] = temp;
+
+                //std::swap(A[i - 1], A[i]);
+
+                swapped = true;
+            }
+        }
+        n = n - 1;
+    } while (swapped);
+}
+
+void bubbleSort(std::vector<std::string>& A)
+{
+    int n = A.size();
+
+    bool swapped;
+    do
+    {
+        swapped = false;
+        for (size_t i = 1; i <= n - 1; i++)
+        {
+            //int compResult = _stricmp(A[i - 1].c_str(), A[i].c_str());
+            if (_stricmp(A[i - 1].c_str(), A[i].c_str()) > 0)//A[i - 1] > A[i])
+            {
+                //swap(A[i - 1], A[i]);
+                std::string temp = A[i - 1];
+                A[i - 1] = A[i];
+                A[i] = temp;
+
+                //std::swap(A[i - 1], A[i]);
+
+                swapped = true;
+            }
+        }
+        n = n - 1;
+    } while (swapped);
+}
+
 int main()
 {
     /*
@@ -108,6 +161,16 @@ int main()
     for (auto i : nums)
         std::cout << i << " ";
 
+
+    std::cout << "\n-----UNSORTED----\n";
+    std::vector<int> numbers{ 13,0,420,5,1 };
+    for (auto i : numbers)
+        std::cout << i << " ";
+    bubbleSort(numbers);
+    std::cout << "\n-----SORTED----\n";
+    for (auto i : numbers)
+        std::cout << i << " ";
+
     /*
         ╔═════════════════╗
         ║Comparing Strings║
@@ -168,7 +231,14 @@ int main()
     //call your BubbleSort on the names vector.
 
 
+    std::cout << "\n-----UNSORTED----\n";
     //print the sorted vector.
+    for (auto& name : names)
+        std::cout << name << "\n";
+
+    bubbleSort(names);
+
+    std::cout << "\n-----SORTED----\n";
     for (auto& name : names)
         std::cout << name << "\n";
 }
