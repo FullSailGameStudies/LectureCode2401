@@ -223,16 +223,21 @@ int main()
     }
 
 
+    std::string itemToFind = "Cheezy Fries";
+    auto isFoundIterator = menu.find(itemToFind);
+    if (isFoundIterator == menu.end()) //NOT FOUND
+    {
+        std::cout << itemToFind << " was not found.\n";
+    }
+    else
+    {
+        std::cout << itemToFind << " used to cost " << isFoundIterator->second << "\n";
+        isFoundIterator->second *= 1.05;//adds a 5% increase to the price
+        std::cout << itemToFind << " now costs " << menu[itemToFind] << ". Thanks PUTIN!\n";
+    }
 
-    /*
-        CHALLENGE 5:
-
-            look for a specific student in the map.
-            If the student is found, print out the student's grade
-            else print out a message that the student was not found
-
-    */
-
+    float newPrice = menu["Cheezy Dogs"];//what will this do?? will this throw an exception??
+    std::cout << "Cheezy Dogs costs " << newPrice << "\n";
 
 
 
@@ -251,10 +256,41 @@ int main()
 
 
 
+
+    /*
+        CHALLENGE 5:
+
+            look for a specific student in the map.
+            If the student is found, print out the student's grade
+            else print out a message that the student was not found
+
+    */
     /*
         CHALLENGE 6:
 
             Pick any student and curve the grade (add 5) that is stored in the grades map
 
     */
+    std::string student = "Harold";
+    auto foundStudent = grades.find(student);
+    if (foundStudent != grades.end())
+    {
+        std::cout << student << "'s grade was " << foundStudent->second << ". WOW!\n";
+        foundStudent->second = std::min(100.0, foundStudent->second + 5);
+        std::cout << student << "'s grade is now " << grades[student] << ".\n";
+        if (foundStudent->second > 59.5) std::cout << "GOOD JOB!\n";
+        else std::cout << "Better luck next time. :(  \n";
+    }
+    else
+        std::cout << student << " is not in PG2 this month.\n";
+
+
+
+    if (grades.erase(student) > 0)
+        std::cout << student << " was dropped from PG2.\n";
+    else
+        std::cout << student << " is not in PG2 this month.\n";
+
+    grades.erase(foundStudent);
+
 }
