@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <iomanip>
 
 enum class Weapon
 {
@@ -99,9 +100,38 @@ int main()
 
     */
 
+    std::map<std::string, float> menu;//type of the keys is string (name), type of the values is float (price)
+
+    //keys are UNIQUE in the map
+    //values are NOT unique
+    std::string key = "Cheez Burger";
+    float value = 1.99F;
+    menu[key] = value;
+    menu["Cheezy Fries"] = 0.99F;
+    menu["Dino Nuggies"] = 4.99F;
+    menu["Dino Nuggies"] = 7.99F;//overwrite any existing value for the key
+
+    auto result = menu.insert(std::make_pair("Cheezy Pizza", 6.99F));
+    if (result.second)
+    {
+        std::cout << "Cheezy Pizza was added to the menu.\n";
+    }
+    else
+        std::cout << "Cheezy Pizza was already on the menu.\n";
 
 
-
+    srand(time(NULL));
+    std::vector<std::string> names{ "Alexander", "Candace", "Shaley", "Michael", "Miguel", "Osiris",
+"John", "Payton", "Donell", "Luke", "Joshua", "Dominick", "Patrick", "Asah", "Derick",
+"Angel", "Dante", "Jshaun", "Jaxx", "Muhanad", "Harold", "Natalie", "Michael J", "Liam",
+"Nathan", "Shane", "Matthew J", "Duc", "Jeremy", "Sterling", "Seth", "Maxwell", "Emily",
+"Huy", "Derrick W", "Bryan", "Akheem", "Dylan", "Eric", "Khalid", "Lindsey", "Sabrina",
+"Timothy", "William" };
+    std::map<std::string, double> grades;
+    for (auto& name : names)
+    {
+        grades[name] = rand() % 10001 / 100.0;
+    }
 
 
     /*
@@ -114,6 +144,23 @@ int main()
         You should use a ranged-based for loop when needing to loop over the entire map.
 
     */
+    std::cout << "\nWelcome to Cheezy World\n";
+    for (auto menuIter = menu.begin(); menuIter != menu.end(); menuIter++)
+    {
+        //menuIter->first is the KEY
+        //menuIter->second is the VALUE associated with the KEY
+        std::cout << std::setw(20) << std::left << menuIter->first << std::setw(7) << std::right << menuIter->second;
+        std::cout << "\n";
+    }
+
+    std::cout << "\nWelcome to Cheezy World\n";
+    for (auto& [itemName, itemPrice] : menu)
+    {
+        std::cout << std::setw(20) << std::left << itemName << std::setw(7) << std::right << itemPrice;
+        std::cout << "\n";
+    }
+
+
     for (auto const& [key, val] : dorasBackpack) //requires C++ 20
     {
         switch (key)
@@ -143,6 +190,12 @@ int main()
             Loop over your grades map and print each student name and grade.
 
     */
+    std::cout << "\n\nGrades for PG2 2401\n";
+    for (auto& [studentName, studentGrade] : grades)
+    {
+        std::cout << std::setw(15) << std::left << studentName;
+        std::cout << std::setw(7) << std::right << studentGrade << "\n";
+    }
 
 
 
