@@ -19,6 +19,7 @@ public:
 	}
 
 	//create a constructor to inialize the name and age
+	Student(int age, std::string name);
 
 private:
 	int age_;
