@@ -18,6 +18,8 @@ public:
 			name_ = name;
 	}
 
+	//create a constructor to inialize the name and age
+
 private:
 	int age_;
 	std::string name_;

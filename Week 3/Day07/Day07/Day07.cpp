@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Pickaxe.h"
+#include "Day07.h"
 
 
 /*              CLASSESS
@@ -49,13 +50,14 @@ int main()
         Lecture code: add a Pickaxe class
     
     */
-    Pickaxe picky;
+    Pickaxe picky(ToolMaterial::Diamond, "Stone Crusher");
     //picky.label_ = "Steev";
     std::string whatDidIHit = picky.Swing();
 
-    picky.Label("Stone Crusher");     //calling the setter
+    //picky.Label("Stone Crusher");     //calling the setter
     std::string label = picky.Label();//calling the getter
-
+    std::cout << "I have a " << picky.Material() <<
+        " pickaxe named " << label << "! \n";
 
 
     /*

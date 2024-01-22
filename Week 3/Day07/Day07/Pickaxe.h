@@ -1,5 +1,10 @@
 #pragma once
 #include <string>
+
+enum ToolMaterial
+{
+	Wood, Stone, Gold, Iron, Diamond
+};
 class Pickaxe
 {
 public:
@@ -20,7 +25,15 @@ public:
 		}
 	}
 
+	ToolMaterial Material() { return material_; }
+
+	//ctor (constructor)
+	//Pickaxe(); //default (no parameters)
+	Pickaxe(ToolMaterial material, std::string label);
+	Pickaxe(ToolMaterial material);
+
 private:
+	ToolMaterial material_;
 	std::string label_;//mLabel or _label
 
 public:
