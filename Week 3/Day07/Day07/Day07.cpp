@@ -50,9 +50,11 @@ int main()
     
     */
     Pickaxe picky;
+    //picky.label_ = "Steev";
     std::string whatDidIHit = picky.Swing();
 
-
+    picky.Label("Stone Crusher");     //calling the setter
+    std::string label = picky.Label();//calling the getter
 
 
 
