@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "Pickaxe.h"
 
 
 /*              CLASSESS
@@ -45,17 +46,12 @@
 int main()
 {
     /*
-        Lecture code: add a Car class
+        Lecture code: add a Pickaxe class
     
     */
+    Pickaxe picky;
+    std::string whatDidIHit = picky.Swing();
 
-    /*
-        CHALLENGE:
-
-            Create a Person class.
-            Right-Click the project and select "Add > Class..."
-
-    */
 
 
 
@@ -75,7 +71,14 @@ int main()
 
     /*
         CHALLENGE:
-            Add an age field and a name field to the Person class
+
+            Create a Student class.
+            Right-Click the project and select "Add > Class..."
+
+    */
+    /*
+        CHALLENGE:
+            Add an age field and a name field to the Student class
     */
 
 
@@ -105,6 +108,12 @@ int main()
             write an ItsMyBirthday method. increment age and print out a happy message.
     */
 
+    /*
+    Add a Study method to the Student class.
+    It should take an float parameter for the number of hours to study.
+    print out some message.
+    call the method from main.
+    */
 
 
 
