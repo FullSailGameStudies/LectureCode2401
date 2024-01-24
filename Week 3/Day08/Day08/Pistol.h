@@ -9,6 +9,8 @@ public:
 	{	
 		MagCapacity(magCap);
 		Rounds(rounds);
+
+		mRange += 5;
 	}
 
 	int Rounds() { return rounds_; }

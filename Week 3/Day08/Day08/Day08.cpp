@@ -7,6 +7,9 @@
 #include "Polymorphism.h"
 #include "Car.h"
 #include "FlyingCar.h"
+#include "Weapon.h"
+#include "Pistol.h"
+#include <vector>
 
 
 int main()
@@ -43,7 +46,7 @@ int main()
 
 
 	FlyingCar jetsons(10000,200,2025,"Tesla", "Xwing");
-
+	jetsons.vehicleInformation();
 
 
 	/*
@@ -75,6 +78,8 @@ int main()
 
 	*/
 
+	Account savings(100), checking(-50);
+	checking = checking + savings;
 
 
 	/*
@@ -87,7 +92,9 @@ int main()
 			to increase the damage when calculating the damage.
 
 	*/
-
+	Weapon knife(3, 10);
+	knife.calcDamage();
+	knife.calcDamage(5);
 
 
 
@@ -161,8 +168,26 @@ int main()
 
 	*/
 
+	int num = 5;
+	long bigNum = num;//casting? implicit
+	float fNum = 4.5F;
+	num = (int)fNum;//casting? explicit
 
+	Pistol johnWickSpecial(100, 1000, 500, 10000);
+	Weapon myCurrentWeapon = johnWickSpecial;
+	std::vector<Weapon> dorasbackpack;
+	dorasbackpack.push_back(johnWickSpecial);
 
+	std::vector<std::unique_ptr<Car>> garage;
+	garage.push_back(std::make_unique<FlyingCar>(10000, 200, 2025, "Tesla", "Xwing"));
+	garage.push_back(std::make_unique<Car>(2015, "Ford", "Fusion"));
+
+	std::cout << "\n\nHook's Garage\n";
+	for (auto& car : garage)
+	{
+		//runtime polymorphism: checks the vtable to determine which method to call
+		std::cout << car->vehicleInformation() << "\n\n";
+	}
 
 	/*
 		╔════════════╗

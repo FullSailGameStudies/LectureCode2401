@@ -11,6 +11,9 @@ public:
 	{
 
 	}
+
+	std::string vehicleInformation() override;
+
 private:
 	float maxAltitude_;
 	float maxAirSpeed_;

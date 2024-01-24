@@ -10,7 +10,11 @@ void Weapon::showMe()
 	std::cout << "Range: " << mRange << " Damage: " << mDamage << "\n";
 }
 
-int Weapon::calcDamage()
+//int Weapon::calcDamage()
+//{
+//	return rand() % (mDamage+1);
+//}
+int Weapon::calcDamage(int modifier)
 {
-	return rand() % (mDamage+1);
+	return rand() % (mDamage + 1) + modifier;
 }

@@ -1,7 +1,7 @@
 #pragma once
 class Weapon
 {
-private:
+protected:
 	int mRange;
 	int mDamage;
 
@@ -9,7 +9,8 @@ public:
 	Weapon(int range, int damage);
 
 	void showMe();
-	int calcDamage();
+	//int calcDamage();
+	int calcDamage(int modifier = 0);
 
 	int range() const
 	{
