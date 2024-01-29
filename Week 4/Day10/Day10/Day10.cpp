@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include "Superhero.h"
 
 
 
@@ -134,7 +135,32 @@ int main()
             name^secret^age  the details of each hero is separated by a ^
 
     */
+    std::vector<Superhero> JLA;
     std::string multi = "Batman^Bruce Wayne^35#Superman^Clark Kent^25#Wonder Woman^Diana Prince^25#Aquaman^Arthur Curry^12";
     char collectionSeparator = '#';
     char objectSeparator = '^';
+
+    std::string heroString;
+    std::stringstream heroStream(multi);
+    while (std::getline(heroStream, heroString, collectionSeparator))
+    {
+        //std::cout << heroString << "\n";
+        std::stringstream detailsStream(heroString);
+        std::string name, secret, ageString;
+        int age;
+        std::getline(detailsStream, name, objectSeparator);
+        std::getline(detailsStream, secret, objectSeparator);
+        std::getline(detailsStream, ageString, objectSeparator);
+        age = std::stoi(ageString);
+
+        Superhero hero(name, secret, age);
+        JLA.push_back(hero);
+    }
+
+    std::cout << "\n\nThe Justice League\n";
+    for (auto& hero : JLA)
+    {
+        std::cout << "Hello citizen! I am " << hero.Name() << "! (aka " << hero.Secret() << ") ";
+        std::cout << "And I am " << hero.Age() << " years old.\n";
+    }
 }
