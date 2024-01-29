@@ -54,10 +54,36 @@ int main()
     std::string fullPath = path + fileName;
     char delimiter = '?';
 
+    //writing the csv data
     {
-        std::ofstream outFile(fileName);//where is it going to write the file?
+        std::ofstream outFile(fullPath);//where is it going to write the file?
         outFile << "Batman rules!" << delimiter << 5 << delimiter << 13.7 << delimiter << true;
     }
+
+    //read the csv data
+    std::ifstream inFile(fullPath);
+    std::string line;
+    std::getline(inFile, line);
+    std::cout << line << "\n";
+    inFile.close();
+
+    //parse the csv data into individual pieces
+    std::stringstream lineStream(line);
+
+    std::string data;
+    std::getline(lineStream, data, delimiter);//reads "Batman rules!"
+    std::string catchPhrase = data;
+
+    std::getline(lineStream, data, delimiter); //reads "5"
+    int age = std::stoi(data);//let's hope it's an int
+
+
+    std::getline(lineStream, data, delimiter); //reads "13.7"
+    double bankBalance = std::stod(data);
+
+    std::getline(lineStream, data, delimiter); //reads "1"
+    bool amIGoingToPass = std::stoi(data);
+
 
 
     /*
