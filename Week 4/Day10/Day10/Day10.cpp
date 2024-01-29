@@ -58,33 +58,43 @@ int main()
     //writing the csv data
     {
         std::ofstream outFile(fullPath);//where is it going to write the file?
-        outFile << "Batman rules!" << delimiter << 5 << delimiter << 13.7 << delimiter << true;
+        if (outFile.is_open())
+        {
+            outFile << "Batman rules!" << delimiter << 5 << delimiter << 13.7 << delimiter << true;
+        }
+        else
+            std::cout << "There was a problem opening the file.\n";
     }
 
     //read the csv data
-    std::ifstream inFile(fullPath);
     std::string line;
-    std::getline(inFile, line);
-    std::cout << line << "\n";
-    inFile.close();
+    std::ifstream inFile(fullPath);
+    if (inFile.is_open())
+    {
+        std::getline(inFile, line);
+        std::cout << line << "\n";
+        inFile.close();
 
-    //parse the csv data into individual pieces
-    std::stringstream lineStream(line);
+        //parse the csv data into individual pieces
+        std::stringstream lineStream(line);
 
-    std::string data;
-    std::getline(lineStream, data, delimiter);//reads "Batman rules!"
-    std::string catchPhrase = data;
+        std::string data;
+        std::getline(lineStream, data, delimiter);//reads "Batman rules!"
+        std::string catchPhrase = data;
 
-    std::getline(lineStream, data, delimiter); //reads "5"
-    int age = std::stoi(data);//let's hope it's an int
+        std::getline(lineStream, data, delimiter); //reads "5"
+        int age = std::stoi(data);//let's hope it's an int
 
 
-    std::getline(lineStream, data, delimiter); //reads "13.7"
-    double bankBalance = std::stod(data);
+        std::getline(lineStream, data, delimiter); //reads "13.7"
+        double bankBalance = std::stod(data);
 
-    std::getline(lineStream, data, delimiter); //reads "1"
-    bool amIGoingToPass = std::stoi(data);
+        std::getline(lineStream, data, delimiter); //reads "1"
+        bool amIGoingToPass = std::stoi(data);
 
+    }
+    else
+        std::cout << "There was a problem opening the file.\n";
 
 
     /*
@@ -145,16 +155,16 @@ int main()
     while (std::getline(heroStream, heroString, collectionSeparator))
     {
         //std::cout << heroString << "\n";
-        std::stringstream detailsStream(heroString);
-        std::string name, secret, ageString;
-        int age;
-        std::getline(detailsStream, name, objectSeparator);
-        std::getline(detailsStream, secret, objectSeparator);
-        std::getline(detailsStream, ageString, objectSeparator);
-        age = std::stoi(ageString);
+        //std::stringstream detailsStream(heroString);
+        //std::string name, secret, ageString;
+        //int age;
+        //std::getline(detailsStream, name, objectSeparator);
+        //std::getline(detailsStream, secret, objectSeparator);
+        //std::getline(detailsStream, ageString, objectSeparator);
+        //age = std::stoi(ageString);
 
-        Superhero hero(name, secret, age);
-        JLA.push_back(hero);
+        //Superhero hero(name, secret, age);
+        JLA.push_back(Superhero::Deserialize(heroString, objectSeparator));
     }
 
     std::cout << "\n\nThe Justice League\n";
@@ -162,5 +172,49 @@ int main()
     {
         std::cout << "Hello citizen! I am " << hero.Name() << "! (aka " << hero.Secret() << ") ";
         std::cout << "And I am " << hero.Age() << " years old.\n";
+    }
+
+    std::string heroFile = "heroes.csv";
+    fullPath = path + heroFile;
+    std::ofstream heroOutFile(fullPath);
+    if (heroOutFile.is_open())
+    {
+        for (auto& hero : JLA)
+        {
+            hero.Serialize(heroOutFile, '^');
+
+        }
+    }
+    else
+        std::cout << "There was a problem opening the file.\n";
+    heroOutFile.close();//CLOSE YOUR FILES!
+    
+
+    std::cout << "\n\nThe Justice League\n";
+    for (auto& hero : JLA)
+    {
+        hero.Serialize(std::cout, '\t');
+    }
+
+
+    std::vector<Superhero> JLA2;
+    std::ifstream heroInFile(fullPath);
+    if (heroInFile.is_open())
+    {
+        std::string heroLine;
+        while (std::getline(heroInFile, heroLine))
+        {
+            JLA2.push_back(Superhero::Deserialize(heroLine, '^'));
+        }
+    }
+    else
+        std::cout << "There was a problem opening the file.\n";
+    heroInFile.close();
+
+
+    std::cout << "\n\nThe Justice League2\n";
+    for (auto& hero : JLA2)
+    {
+        hero.Serialize(std::cout, '\t');
     }
 }
