@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "static.h"
+#include "abstract.h"
 
 /*
 Nested class
@@ -14,6 +15,8 @@ Friends
 
 int main()
 {
+    //Weapon pewpew;
+    Grenade boom;
 
     /*
         ╔════════════════════╗
@@ -26,6 +29,7 @@ int main()
     {
         demo();
     }
+    std::cout << "\n";
 
 
 
@@ -44,10 +48,11 @@ int main()
         That's also why static methods cannot access non-static members.
 
     */
+    Car otherRide(2024);
     Car myRide(1988);
     Car::reporting();
     myRide.vehicleInfo();//calling non-static methods. myRide is passed in for 'this'
-
+    otherRide.vehicleInfo();
     /*
     
         CHALLENGE:

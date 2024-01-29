@@ -22,15 +22,18 @@ public:
 	int mModelYear; //each car has its own model year variable
 	static int mNumberOfCarsMade; //shared by ALL cars
 
+	//static methods do NOT have a this
+	//static methods can ONLY access static members
 	static void reporting()
 	{
 		//std::cout << "Model year: " << mModelYear << "\n"; //ERROR! cannot access non-static members
 		std::cout << "Number of cars made: " << mNumberOfCarsMade << "\n";
 	}
 
+	//non-static methods can access non-static AND static members
 	void vehicleInfo() //there's a hidden parameter called 'this'
 	{
-		std::cout << "Model Year: " << this->mModelYear << "\n";
+		std::cout << "Model Year: " << mModelYear << "\n";
 	}
 };
 
